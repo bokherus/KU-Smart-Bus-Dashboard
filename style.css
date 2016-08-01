@@ -1,0 +1,141 @@
+html {
+  color: #616161;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+}
+
+body {
+  font-family: Open Sans, sans-serif;
+  background: rgba(174, 213, 129, 0.88);
+  height: 100%;
+}
+
+ul {
+  overflow:hidden;
+  overflow-y:scroll;
+}
+
+li {
+  padding: 20px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(34,36,38,.15);
+}
+
+li .action {
+  color: #5E5B5C;
+}
+
+li.timestamp {
+  color: #616161;
+  font-weight: 300;
+}
+
+.ng-scope {
+  height: 100%;
+}
+
+.fullscreen.overflow {
+  height:auto;
+  min-height:100%;
+}
+
+.head-tab {
+  background: #DCD7D7;
+  padding: 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.half {
+  height: 50%;
+}
+
+.width-50 {
+  width: 50%
+}
+
+.height-10 {
+  height: 10%;
+}
+
+.height-20 {
+  height: 20%;
+}
+
+.height-40 {
+  height: 40%;
+}
+
+.height-80 {
+  height: 80%;
+}
+
+.height-90 {
+  height: 90%;
+}
+
+.height-100 {
+  height: 100%;
+}
+
+.row.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.no-gutter [class*='col-']:not(:first-child),
+.row.no-gutter [class*='col-']:not(:last-child) {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.card {
+  background: #EEEEEE;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.header {
+  text-align: center;
+  padding:10px;
+}
+
+.card .header {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.card .content {
+  font-size: 48px;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.empty {
+  background: #27AE60;
+}
+
+.crowded {
+  background: #F39C12;
+}
+
+.full {
+  background: #C0392B;
+}
+
+.white {
+  color: white;
+}
