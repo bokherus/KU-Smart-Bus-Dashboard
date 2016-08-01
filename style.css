@@ -138,27 +138,57 @@ li.ng-enter-active {
 }
 
 .green {
-  background: #27AE60;
+  background-color: #27AE60;
+  -webkit-transition: background-color 1000ms ease;
+  -moz-transition: background-color 1000ms ease;
+  -o-transition: background-color 1000ms ease;
+  -ms-transition: background-color 1000ms ease;
+  transition: background-color 1000ms ease;
 }
 
 .lightgreen {
-  background: #AED581;
+  background-color: #AED581;
+  -webkit-transition: background-color 1000ms ease;
+  -moz-transition: background-color 1000ms ease;
+  -o-transition: background-color 1000ms ease;
+  -ms-transition: background-color 1000ms ease;
+  transition: background-color 1000ms ease;
 }
 
 .yellow {
-  background: #F39C12;
+  background-color: #F39C12;
+  -webkit-transition: background-color 1000ms ease;
+  -moz-transition: background-color 1000ms ease;
+  -o-transition: background-color 1000ms ease;
+  -ms-transition: background-color 1000ms ease;
+  transition: background-color 1000ms ease;
 }
 
 .lightyellow {
-  background: #FFD180;
+  background-color: #FFD180;
+  -webkit-transition: background-color 1000ms ease;
+  -moz-transition: background-color 1000ms ease;
+  -o-transition: background-color 1000ms ease;
+  -ms-transition: background-color 1000ms ease;
+  transition: background-color 1000ms ease;
 }
 
 .red {
-  background: #C0392B;
+  background-color: #C0392B;
+  -webkit-transition: background-color 1000ms ease;
+  -moz-transition: background-color 1000ms ease;
+  -o-transition: background-color 1000ms ease;
+  -ms-transition: background-color 1000ms ease;
+  transition: background-color 1000ms ease;
 }
 
 .lightred {
-  background: #E57373;
+  background-color: #E57373;
+  -webkit-transition: background-color 1000ms ease;
+  -moz-transition: background-color 1000ms ease;
+  -o-transition: background-color 1000ms ease;
+  -ms-transition: background-color 1000ms ease;
+  transition: background-color 1000ms ease;
 }
 
 .white {

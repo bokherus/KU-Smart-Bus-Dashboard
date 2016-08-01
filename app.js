@@ -11,7 +11,7 @@ function($scope, $interval, $http) {
   $scope.out = 0;
   $scope.seat_left = 0;
   $scope.reserved = false;
-  $scope.reservation_text = "Reserve a  seat";
+  $scope.reservation_text = "Reserve";
   $scope.reserve_status = "";
   $scope.color = 'green';
   $scope.background = 'lightgreen'
@@ -21,8 +21,7 @@ function($scope, $interval, $http) {
   $scope.setIn = function(amount) {
     if ($scope.in != 0) {
       for (var i = 0; i < amount - $scope.in ; i++) {
-        $scope.addHistory("In", "green");
-        console.log(i);
+        $scope.addHistory("Passenger get on", "green");
       }
     }
     $scope.in = amount;
@@ -31,8 +30,7 @@ function($scope, $interval, $http) {
   $scope.setOut = function(amount) {
     if ($scope.out != 0) {
       for (var i = 0; i < amount - $scope.out ; i++) {
-        $scope.addHistory("Out", "red");
-        console.log(i);
+        $scope.addHistory("Passenger get off", "red");
       }
     }
     $scope.out = amount;
@@ -44,7 +42,7 @@ function($scope, $interval, $http) {
       $scope.reservation_text = "Reserved";
       $scope.reserve_status = "disabled";
     } else {
-      $scope.reservation_text = "Reserved a seat";
+      $scope.reservation_text = "Reserve";
       $scope.reserve_status = "";
     }
   }
@@ -53,8 +51,7 @@ function($scope, $interval, $http) {
     if ($scope.reserve_status == 'disabled') return;
     $scope.reserved = true;
     $scope.reservation_text = "Reserving.."
-    var result_string = $scope.in + ',' + $scope.out + ',' + $scope.color + ',' + $scope.reserved
-    $http.get('http://10.32.176.4/staff_hardware/' + result_string)
+    $http.get('http://10.32.176.4/staff_hardware/' + $scope.reserved)
       .then(function(response) {
         console.log(response.status);
         console.log(response.data);
