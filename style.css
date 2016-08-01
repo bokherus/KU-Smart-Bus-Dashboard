@@ -137,26 +137,44 @@ li.ng-enter-active {
   font-weight: 300;
 }
 
-.empty {
+.green {
   background: #27AE60;
 }
 
-.crowded {
+.lightgreen {
+  background: #AED581;
+}
+
+.yellow {
   background: #F39C12;
 }
 
-.full {
+.lightyellow {
+  background: #FFD180;
+}
+
+.red {
   background: #C0392B;
+}
+
+.lightred {
+  background: #E57373;
 }
 
 .white {
   color: white;
 }
 
-.red {
-  color: #C0392B;
+#reserve_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
-.green {
-  color: #27AE60;
+#control_panel {
+  position: relative;
 }
+
+button:focus {outline:0;}

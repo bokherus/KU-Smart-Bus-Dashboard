@@ -16,12 +16,13 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body ng-app="SmartBus">
-        <div class="container fullscreen" ng-controller="DashboardController">
+      <section class="fullscreen" ng-controller="DashboardController" ng-class="background">
+        <div class="container fullscreen height-100">
             <div class="height-10">
               <h2><i class="fa fa-bus" aria-hidden="true"></i> Smart Bus</h2>
             </div>
             <div class="row no-gutter height-80">
-                <div class="col-md-6 col-sm-6 height-100">
+                <div class="col-md-7 col-sm-7 height-100">
                     <div class="wrapper height-20">
                         <div class="card center-content height-100">
                             <div class="content center" ng-cloak>
@@ -30,14 +31,17 @@
                         </div>
                     </div>
                     <div class="wrapper height-40">
-                        <div class="card center-content height-100" ng-class="state()">
+                        <div id="control_panel" class="card center-content height-100" ng-class="color">
+                          <button id="reserve_btn" class="btn" ng-click='reserveSeat()' ng-class="reserve_status">
+                            {{ reservation_text }}
+                          </button>
                             <div>
                                 <div class="header">
-                                    <span class="white">current</span>
+                                    <span class="white">Remaining Seat</span>
                                 </div>
                                 <div class="content text-center">
                                     <span class="white" ng-cloak>
-                                        {{ current }}
+                                        {{ seat_left }}
                                     </span>
                                 </div>
                             </div>
@@ -46,7 +50,7 @@
 
                     <div class="height-40">
                         <div class="wrapper col-sm-6 height-100">
-                            <div class="card center-content height-100" ng-click="addPassenger()">
+                            <div class="card center-content height-100">
                                 <div>
                                     <div class="header">
                                         <span>in</span>
@@ -58,7 +62,7 @@
                             </div>
                         </div>
                         <div class="wrapper col-sm-6 height-100">
-                            <div class="card center-content height-100" ng-click="removePassenger()">
+                            <div class="card center-content height-100">
                                 <div>
                                     <div class="header">
                                         <span>out</span>
@@ -72,7 +76,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-sm-6 height-100">
+                <div class="col-md-5 col-sm-5 height-100">
                     <div class="wrapper height-100">
                         <div class="card height-100">
                             <div class="head-tab center-content height-10">
@@ -80,7 +84,7 @@
                             </div>
                             <ul class="list-unstyled height-90">
                                 <li ng-repeat="item in historyList" ng-cloak>
-                                    <div class="action" ng-class="item.color">{{ item.action }}</div>
+                                    <div class="action">{{ item.action }}</div>
                                     <div class="timestamp">{{ item.time | amDateFormat:'h:mm:ss a' }}</div>
                                 </li>
                             </ul>
@@ -89,6 +93,7 @@
                 </div>
             </div>
         </div>
+        </section>
         <script src="app.js"></script>
         <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     </script>

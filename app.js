@@ -1,32 +1,89 @@
 
 var app = angular.module('SmartBus', ['angularMoment', 'relativeDate', 'ngAnimate']);
 
-app.controller('DashboardController', ['$scope', '$interval', function($scope, $interval) {
+app.controller('DashboardController', ['$scope', '$interval', '$http',
+function($scope, $interval, $http) {
+
+
+  var TOTAL_SEAT = 20;
 
   $scope.clock = new Date();
   $scope.in = 0;
   $scope.out = 0;
-  $scope.current = 0;
+  $scope.seat_left = 0;
+  $scope.reserved = false;
+  $scope.reservation_text = "Reserve a  seat";
+  $scope.reserve_status = "";
+  $scope.color = 'green';
+  $scope.background = 'lightgreen'
 
   $scope.historyList = [];
 
-  $scope.state = function() {
-    if ($scope.current < 10) return "empty";
-    else if ($scope.current < 20) return "crowded";
-    else return "full";
+  $scope.setIn = function(amount) {
+    if ($scope.in != 0) {
+      for (var i = 0; i < amount - $scope.in ; i++) {
+        $scope.addHistory("In", "green");
+        console.log(i);
+      }
+    }
+    $scope.in = amount;
   };
 
-  $scope.addPassenger = function() {
-    $scope.in++;
-    $scope.addHistory("In", "green");
-    $scope.current = $scope.in - $scope.out;
-  };
+  $scope.setOut = function(amount) {
+    if ($scope.out != 0) {
+      for (var i = 0; i < amount - $scope.out ; i++) {
+        $scope.addHistory("Out", "red");
+        console.log(i);
+      }
+    }
+    $scope.out = amount;
+  }
 
-  $scope.removePassenger = function() {
-    $scope.out++;
-    $scope.addHistory("Out", "red");
-    $scope.current = $scope.in - $scope.out;
-  };
+  $scope.setReservationStatus = function(status) {
+    console.log("Set reservation status");
+    reserved = status;
+    console.log(status);
+    if (status == 'true') {
+      console.log("IF")
+      $scope.reservation_text = "Reserved";
+      $scope.reserve_status = "disabled";
+    } else {
+      $scope.reservation_text = "Reserved a seat";
+      $scope.reserve_status = "";
+    }
+  }
+
+  $scope.reserveSeat = function() {
+    console.log("Reserve seat")
+    $scope.reserved = true;
+    $scope.reservation_text = "Reserving.."
+    var result_string = $scope.in + ',' + $scope.out + ',' + $scope.color + ',' + $scope.reserved
+    $http.get('http://10.32.176.4/staff_hardware/' + result_string)
+      .then(function(response) {
+        console.log(response.status);
+        console.log(response.data);
+      }, function(response) {
+        console.log(response.status);
+        console.log(response.data);
+      });
+  }
+
+  $scope.retriveDataFromServer = function() {
+    console.log("Retrieve data from server")
+    $http.get('http://10.32.176.4/staff_hardware')
+      .then(function(response) {
+          var data = response.data.split(",");
+          $scope.setIn(data[0]);
+          $scope.setOut(data[1]);
+          $scope.color = data[2];
+          $scope.background = "light" + data[2];
+          $scope.setReservationStatus(data[3]);
+          $scope.seat_left = TOTAL_SEAT - ($scope.in - $scope.out);
+        }, function(response) {
+          console.log(response.status);
+          console.log(response.data);
+        });
+  }
 
   $scope.addHistory = function(message, color) {
     console.log(color);
@@ -39,6 +96,7 @@ app.controller('DashboardController', ['$scope', '$interval', function($scope, $
 
   $interval(function() {
     $scope.clock = new Date();
+    $scope.retriveDataFromServer();
   }, 1000);
 
 }]);
