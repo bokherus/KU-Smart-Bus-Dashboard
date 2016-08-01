@@ -18,7 +18,6 @@
     <body ng-app="SmartBus">
         <div class="container fullscreen" ng-controller="DashboardController">
             <div class="height-10">
-              <div ng-click="addHistory()">Push</div>
               <h2><i class="fa fa-bus" aria-hidden="true"></i> Smart Bus</h2>
             </div>
             <div class="row no-gutter height-80">
@@ -47,7 +46,7 @@
 
                     <div class="height-40">
                         <div class="wrapper col-sm-6 height-100">
-                            <div class="card center-content height-100">
+                            <div class="card center-content height-100" ng-click="addPassenger()">
                                 <div>
                                     <div class="header">
                                         <span>in</span>
@@ -59,7 +58,7 @@
                             </div>
                         </div>
                         <div class="wrapper col-sm-6 height-100">
-                            <div class="card center-content height-100">
+                            <div class="card center-content height-100" ng-click="removePassenger()">
                                 <div>
                                     <div class="header">
                                         <span>out</span>
@@ -82,7 +81,7 @@
                             <ul class="list-unstyled height-90">
                                 <li ng-repeat="item in historyList" ng-cloak>
                                     <div class="action">{{ item.action }}</div>
-                                    <div class="timestamp">{{ item.time | relativeDate }}</div>
+                                    <div class="timestamp" am-time-ago="item.time"></div>
                                 </li>
                             </ul>
                         </div>
