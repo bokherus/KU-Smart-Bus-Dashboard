@@ -1,16 +1,8 @@
 {
-  "name": "ku-smart-bus",
+  "name": "smartbus",
   "version": "1.0.0",
-  "description": "Dashboard for IOT project",
+  "description": "a dashboard",
   "main": "app.js",
-  "dependencies": {
-    "angular": "^1.5.8",
-    "angular-moment": "^0.10.3",
-    "bootstrap": "^3.3.7",
-    "jquery": "^3.1.0",
-    "moment": "^2.14.1"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,10 +10,18 @@
     "type": "git",
     "url": "git+https://github.com/bokherus/KU_Smart_Bus_Dashboard.git"
   },
-  "author": "",
+  "author": "me",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bokherus/KU_Smart_Bus_Dashboard/issues"
   },
-  "homepage": "https://github.com/bokherus/KU_Smart_Bus_Dashboard#readme"
+  "homepage": "https://github.com/bokherus/KU_Smart_Bus_Dashboard#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-moment": "^0.10.3",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0",
+    "moment": "^2.14.1"
+  }
 }

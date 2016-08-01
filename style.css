@@ -23,15 +23,6 @@ li {
   height: auto !important;
 }
 
-
-.slide-fade li {
-  transition: all 0.4s ease-out;
-  opacity: 0;
-}
-.slide-fade li.show {
-  opacity: 1;
-}
-
 li .action {
   color: #5E5B5C;
 }
@@ -39,6 +30,15 @@ li .action {
 li.timestamp {
   color: #616161;
   font-weight: 300;
+}
+
+li.ng-enter {
+    -webkit-transition: 1s;
+    transition: 1s;
+    opacity: 0;
+}
+li.ng-enter-active {
+    opacity: 1;
 }
 
 .ng-scope {
