@@ -111,9 +111,6 @@ li.ng-enter-active {
   -webkit-border-radius: 0 !important;
   -moz-border-radius: 0 !important;
   border-radius: 0 !important;
-  /*margin-top: 10px;
-  margin-left: 5px;
-  margin-right: 5px;*/
 }
 
 .header {
@@ -154,4 +151,12 @@ li.ng-enter-active {
 
 .white {
   color: white;
+}
+
+.red {
+  color: #C0392B;
+}
+
+.green {
+  color: #27AE60;
 }

@@ -10,22 +10,29 @@ app.controller('DashboardController', ['$scope', '$interval', function($scope, $
 
   $scope.historyList = [];
 
+  $scope.state = function() {
+    if ($scope.current < 10) return "empty";
+    else if ($scope.current < 20) return "crowded";
+    else return "full";
+  };
+
   $scope.addPassenger = function() {
     $scope.in++;
-    $scope.addHistory("In");
+    $scope.addHistory("In", "green");
     $scope.current = $scope.in - $scope.out;
   };
 
   $scope.removePassenger = function() {
     $scope.out++;
-    $scope.addHistory("Out");
+    $scope.addHistory("Out", "red");
     $scope.current = $scope.in - $scope.out;
   };
 
-  $scope.addHistory = function(message) {
-    console.log("ASDAS");
+  $scope.addHistory = function(message, color) {
+    console.log(color);
     $scope.historyList.unshift({
       action: message,
+      color: color,
       time: new Date()
     });
   };

@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="wrapper height-40">
-                        <div class="card crowded center-content height-100">
+                        <div class="card center-content height-100" ng-class="state()">
                             <div>
                                 <div class="header">
                                     <span class="white">current</span>
@@ -80,8 +80,8 @@
                             </div>
                             <ul class="list-unstyled height-90">
                                 <li ng-repeat="item in historyList" ng-cloak>
-                                    <div class="action">{{ item.action }}</div>
-                                    <div class="timestamp" am-time-ago="item.time"></div>
+                                    <div class="action" ng-class="item.color">{{ item.action }}</div>
+                                    <div class="timestamp">{{ item.time | amDateFormat:'h:mm:ss a' }}</div>
                                 </li>
                             </ul>
                         </div>
