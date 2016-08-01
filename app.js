@@ -50,6 +50,7 @@ function($scope, $interval, $http) {
   }
 
   $scope.reserveSeat = function() {
+    if ($scope.reserve_status == 'disabled') return;
     $scope.reserved = true;
     $scope.reservation_text = "Reserving.."
     var result_string = $scope.in + ',' + $scope.out + ',' + $scope.color + ',' + $scope.reserved
