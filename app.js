@@ -40,11 +40,8 @@ function($scope, $interval, $http) {
   }
 
   $scope.setReservationStatus = function(status) {
-    console.log("Set reservation status");
     reserved = status;
-    console.log(status);
     if (status == 'true') {
-      console.log("IF")
       $scope.reservation_text = "Reserved";
       $scope.reserve_status = "disabled";
     } else {
@@ -54,7 +51,6 @@ function($scope, $interval, $http) {
   }
 
   $scope.reserveSeat = function() {
-    console.log("Reserve seat")
     $scope.reserved = true;
     $scope.reservation_text = "Reserving.."
     var result_string = $scope.in + ',' + $scope.out + ',' + $scope.color + ',' + $scope.reserved
@@ -69,7 +65,6 @@ function($scope, $interval, $http) {
   }
 
   $scope.retriveDataFromServer = function() {
-    console.log("Retrieve data from server")
     $http.get('http://10.32.176.4/staff_hardware')
       .then(function(response) {
           var data = response.data.split(",");
@@ -86,7 +81,6 @@ function($scope, $interval, $http) {
   }
 
   $scope.addHistory = function(message, color) {
-    console.log(color);
     $scope.historyList.unshift({
       action: message,
       color: color,
