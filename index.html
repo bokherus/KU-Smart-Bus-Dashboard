@@ -2,148 +2,95 @@
 <html>
     <head>
         <meta charset="utf-8">
+
         <title>Smart Bus</title>
+
         <script src="/node_modules/angular/angular.min.js"></script>
         <script src="/node_modules/moment/min/moment.min.js"></script>
         <script src="/node_modules/angular-moment/angular-moment.js"></script>
+        <script src="/javascripts/angular-relative-date.js"></script>
+
         <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-        <!-- <link rel="stylesheet" href="dist/semantic.css"> -->
+        <link rel="stylesheet" href="/font-awesome-4.6.3/css/font-awesome.min.css">
         <link rel="stylesheet" href="style.css">
     </head>
     <body ng-app="SmartBus">
         <div class="container fullscreen" ng-controller="DashboardController">
-            <h1 class="height-10">Smart Bus</h1>
+            <div class="height-10">
+              <div ng-click="addHistory()">Push</div>
+              <h2><i class="fa fa-bus" aria-hidden="true"></i> Smart Bus</h2>
+            </div>
             <div class="row no-gutter height-80">
                 <div class="col-md-6 col-sm-6 height-100">
-
-                  <div class="card center-content height-20">
-                    <div class="content center" ng-cloak>
-                      <div class="light">{{ clock | amDateFormat:'h:mm:ss a' }}</div>
-                    </div>
-                  </div>
-
-                    <div class="card crowded center-content height-40">
-                        <div class="header">
-                            <span class="white">current</span>
+                    <div class="wrapper height-20">
+                        <div class="card center-content height-100">
+                            <div class="content center" ng-cloak>
+                                <div class="light">{{ clock | amDateFormat:'h:mm:ss a' }}</div>
+                            </div>
                         </div>
-                        <div class="content">
-                            <span class="white" ng-cloak>
-                                {{ current }}
-                            </span>
+                    </div>
+                    <div class="wrapper height-40">
+                        <div class="card crowded center-content height-100">
+                            <div>
+                                <div class="header">
+                                    <span class="white">current</span>
+                                </div>
+                                <div class="content text-center">
+                                    <span class="white" ng-cloak>
+                                        {{ current }}
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="height-40">
-                      <div class="card center-content width-50">
-                          <div class="header">
-                              <span>in</span>
-                          </div>
-                          <div class="content">
-                              {{ in }}
-                          </div>
-                      </div>
-                      <div class="card center-content width-50">
-                          <div class="header">
-                              <span>out</span>
-                          </div>
-                          <div class="content">
-                              {{ out }}
-                          </div>
-                      </div>
+                        <div class="wrapper col-sm-6 height-100">
+                            <div class="card center-content height-100">
+                                <div>
+                                    <div class="header">
+                                        <span>in</span>
+                                    </div>
+                                    <div class="content" ng-cloak>
+                                        {{ in }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapper col-sm-6 height-100">
+                            <div class="card center-content height-100">
+                                <div>
+                                    <div class="header">
+                                        <span>out</span>
+                                    </div>
+                                    <div class="content" ng-cloak>
+                                        {{ out }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-
                 </div>
 
-            <div class="col-md-6 col-sm-6 height-100">
-              <div class="card height-100">
-                <div class="head-tab center-content height-10">
-                  <span>passenger history</span>
-                </div>
-                <ul class="list-unstyled height-90">
-                  <li>
-                    <div class="action">Out</div>
-                    <div class="timestamp">30 mins ago</div>
-                  </li>
-                  <li>
-                    <div class="action">Out</div>
-                    <div class="timestamp">Seconds ago</div>
-                  </li>
-                  <li>
-                    <div class="action">In</div>
-                    <div class="timestamp">Just now</div>
-                  </li>
-                  <li>
-                    <div class="action">In</div>
-                    <div class="timestamp">Just now</div>
-                  </li>
-                  <li>
-                    <div class="action">In</div>
-                    <div class="timestamp">Just now</div>
-                  </li>
-                  <li>
-                    <div class="action">In</div>
-                    <div class="timestamp">Just now</div>
-                  </li>
-                  <li>
-                    <div class="action">In</div>
-                    <div class="timestamp">Just now</div>
-                  </li>
-                  <li>
-                    <div class="action">In</div>
-                    <div class="timestamp">Just now</div>
-                  </li>
-                  <li>
-                    <div class="action">In</div>
-                    <div class="timestamp">Just now</div>
-                  </li>
-                  <li>
-                    <div class="action">In</div>
-                    <div class="timestamp">Just now</div>
-                  </li>
-                  <li>
-                    <div class="action">In</div>
-                    <div class="timestamp">Just now</div>
-                  </li>
-                  <li>
-                    <div class="action">In</div>
-                    <div class="timestamp">Just now</div>
-                  </li>
-                  <li>
-                    <div class="action">In</div>
-                    <div class="timestamp">Just now</div>
-                  </li>
-                  <li>
-                    <div class="action">In</div>
-                    <div class="timestamp">Just now</div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- <div class="col-md-4 height-100">
-
-            <div class="card half center-content">
-                <div class="header">
-                    <span>in</span>
-                </div>
-                <div class="content">
-                    {{ in }}
+                <div class="col-md-6 col-sm-6 height-100">
+                    <div class="wrapper height-100">
+                        <div class="card height-100">
+                            <div class="head-tab center-content height-10">
+                                <span>passenger history</span>
+                            </div>
+                            <ul class="list-unstyled height-90 slide-fade">
+                                <li ng-repeat="item in historyList" ng-cloak>
+                                    <div class="action">{{ item.action }}</div>
+                                    <div class="timestamp">{{ item.time | relativeDate }}</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card half center-content">
-                <div class="header">
-                    <span>out</span>
-                </div>
-                <div class="content">
-                    {{ out }}
-                </div>
-            </div>
-          </div> -->
-          </div>
         </div>
         <script src="app.js"></script>
         <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
-        </script>
-    </body>
+    </script>
+</body>
 </html>

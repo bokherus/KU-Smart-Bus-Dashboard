@@ -1,12 +1,14 @@
 
-var app = angular.module('SmartBus', ['angularMoment']);
+var app = angular.module('SmartBus', ['angularMoment', 'relativeDate', 'ngAnimate']);
 
 app.controller('DashboardController', ['$scope', '$interval', function($scope, $interval) {
 
   $scope.clock = new Date();
-  $scope.in = 300;
-  $scope.out = 240;
+  $scope.in = Math.round(Math.random() * 100);
+  $scope.out = Math.round(Math.random() * 100);
   $scope.current;
+
+  $scope.historyList = [];
 
   $scope.addPassenger = function() {
     $scope.in++;
@@ -16,8 +18,12 @@ app.controller('DashboardController', ['$scope', '$interval', function($scope, $
     $scope.out++;
   };
 
-  $scope.currentTime = function() {
-    return new Date();
+  $scope.addHistory = function() {
+    console.log("ASDAS");
+    $scope.historyList.unshift({
+      action: 'new' + Math.round(Math.random() * 100),
+      time: new Date()
+    });
   };
 
   $interval(function() {
