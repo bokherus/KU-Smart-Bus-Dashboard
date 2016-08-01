@@ -21,7 +21,7 @@ function($scope, $interval, $http) {
   $scope.setIn = function(amount) {
     if ($scope.in != 0) {
       for (var i = 0; i < amount - $scope.in ; i++) {
-        $scope.addHistory("Passenger get on", "green");
+        $scope.addHistory("Passenger enter", "green");
       }
     }
     $scope.in = amount;
@@ -30,7 +30,7 @@ function($scope, $interval, $http) {
   $scope.setOut = function(amount) {
     if ($scope.out != 0) {
       for (var i = 0; i < amount - $scope.out ; i++) {
-        $scope.addHistory("Passenger get off", "red");
+        $scope.addHistory("Passenger leave", "red");
       }
     }
     $scope.out = amount;
@@ -41,6 +41,8 @@ function($scope, $interval, $http) {
     if (status == 'true') {
       $scope.reservation_text = "Reserved";
       $scope.reserve_status = "disabled";
+    } else if ($scope.seat_left <= 0) {
+      $scope.reserve_status = "hide"
     } else {
       $scope.reservation_text = "Reserve";
       $scope.reserve_status = "";
