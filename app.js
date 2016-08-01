@@ -4,7 +4,6 @@ var app = angular.module('SmartBus', ['angularMoment', 'relativeDate', 'ngAnimat
 app.controller('DashboardController', ['$scope', '$interval', '$http',
 function($scope, $interval, $http) {
 
-
   var TOTAL_SEAT = 20;
 
   $scope.clock = new Date();

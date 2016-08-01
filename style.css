@@ -177,4 +177,4 @@ li.ng-enter-active {
   position: relative;
 }
 
-button:focus {outline:0;}
+button:focus {outline:0 !important;}
