@@ -38,10 +38,10 @@ function($scope, $interval, $http) {
 
   $scope.setReservationStatus = function(status) {
     reserved = status;
-    if (status == 'true') {
-      $scope.reservation_text = "Reserved";
-      $scope.reserve_status = "disabled";
-    } else if ($scope.seat_left <= 0) {
+    if (status == 'true' || status == true) {
+      $scope.reservation_text = "Cancel";
+      $scope.reserve_status = "btn-danger";
+    } else if ($scope.seat_left <= 0 && status == "false") {
       $scope.reserve_status = "hide"
     } else {
       $scope.reservation_text = "Reserve";
@@ -50,10 +50,17 @@ function($scope, $interval, $http) {
   }
 
   $scope.reserveSeat = function() {
-    if ($scope.reserve_status == 'disabled') return;
-    $scope.reserved = true;
-    $scope.reservation_text = "Reserving.."
-    $http.get('http://10.32.176.4/staff_hardware/' + $scope.reserved)
+    if ($scope.reservation_text == "Reserve")
+      $scope.reserved = true;
+    else {
+      $scope.reserved = false;
+    }
+    var result_string = $scope.in + "," + $scope.out + "," + $scope.color + "," + $scope.reserved
+    console.log(result_string);
+
+    if ($scope.reserved == true) $scope.reservation_text = "Reserving.."
+    else $scope.reservation_text = "Canceling"
+    $http.get('http://10.32.176.4/staff_hardware/' + result_string + '/set')
       .then(function(response) {
         console.log(response.status);
         console.log(response.data);
